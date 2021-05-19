@@ -15,4 +15,3 @@ services:
       - 8888:8888 # binds docker internal service to localhost:8888
     # /wait-for-it.sh checks availability of service on some port, and then launches next command
     command: bash -c 'cd /home && jupyter-notebook --ip=0.0.0.0 --allow-root' # use bash -c "command" because cd works only in shell
-    # will not start this container until listed containers are started. BUT N.B. - Postgre still needs some time to pass some checks before it is available.
