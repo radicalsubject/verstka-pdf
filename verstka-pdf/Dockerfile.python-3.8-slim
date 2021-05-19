@@ -4,8 +4,6 @@ FROM python:3.8-slim
 RUN apt-get -y update && apt-get -y upgrade
 RUN mkdir -p /usr/share/man/man1/
 
-# install git for installing cgrdb from github
-RUN apt-get install git -y
 RUN apt-get install pdftk -y
 RUN apt-get -y install imagemagick
 RUN mv /etc/ImageMagick-6/policy.xml /etc/ImageMagick-6/policy.xml.off
