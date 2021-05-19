@@ -1,16 +1,16 @@
 version: '3'
 
 services: 
-  driver_service:
-    container_name: driver_service
+  verstka-pdf:
+    container_name: verstka-pdf
     stdin_open: true # docker run -i ---> interactive attached terminal input
     tty: true        # docker run -t    
     build:
-      context: ./driver_service
+      context: ./verstka-pdf
       dockerfile: Dockerfile.python-3.8-slim
     restart: always
     volumes:         # docker run -v
-      - ".\\driver_service\\jupyter_scripts:/home" # интерактивно менять скрипты не перезапуская контейнер
+      - ".\\verstka-pdf\\jupyter_scripts:/home" # интерактивно менять скрипты не перезапуская контейнер
     ports: 
       - 8888:8888 # binds docker internal service to localhost:8888
     # /wait-for-it.sh checks availability of service on some port, and then launches next command
