@@ -1,0 +1,18 @@
+version: '3'
+
+services: 
+  driver_service:
+    container_name: driver_service
+    stdin_open: true # docker run -i ---> interactive attached terminal input
+    tty: true        # docker run -t    
+    build:
+      context: ./driver_service
+      dockerfile: Dockerfile.python-3.8-slim
+    restart: always
+    volumes:         # docker run -v
+      - ".\\driver_service\\jupyter_scripts:/home" # интерактивно менять скрипты не перезапуская контейнер
+    ports: 
+      - 8888:8888 # binds docker internal service to localhost:8888
+    # /wait-for-it.sh checks availability of service on some port, and then launches next command
+    command: bash -c 'cd /home && jupyter-notebook --ip=0.0.0.0 --allow-root' # use bash -c "command" because cd works only in shell
+    # will not start this container until listed containers are started. BUT N.B. - Postgre still needs some time to pass some checks before it is available.

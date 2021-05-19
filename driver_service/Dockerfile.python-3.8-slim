@@ -1,0 +1,9 @@
+FROM python:3.8-slim
+
+# updating ubuntu packages
+RUN apt-get -y update && apt-get -y upgrade
+
+# install git for installing cgrdb from github
+RUN apt-get install git -y
+# Jupyter installation
+RUN pip3 install jupyter
